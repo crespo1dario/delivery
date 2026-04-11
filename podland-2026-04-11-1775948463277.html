@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kreative — Brief Podland</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #06060f 0%, #0a0f2e 60%, #101840 100%); min-height: 100vh; padding: 40px 24px; color: #fff; }
+  .kb-wrap { max-width: 900px; margin: 0 auto; }
+  .kb-header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .kb-logo { font-size: 22px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+  .kb-badge { background: rgba(79,70,229,0.15); border: 1px solid rgba(79,70,229,0.4); color: #a5b4fc; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 100px; letter-spacing: 0.08em; }
+  .kb-date { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.35); }
+  .kb-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 24px; margin-bottom: 20px; }
+  .kb-card-title { font-size: 10px; font-weight: 700; color: #4f46e5; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
+  .kb-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 600px) { .kb-info-grid { grid-template-columns: repeat(2, 1fr); } }
+  .kb-info-item { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .kb-info-label { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 500; }
+  .kb-info-value { font-size: 14px; color: #fff; font-weight: 600; word-break: break-word; }
+  .kb-info-value a { color: #a5b4fc; text-decoration: none; }
+  .kb-info-value a:hover { text-decoration: underline; }
+  .kb-brief-body { font-size: 14px; line-height: 1.85; color: rgba(255,255,255,0.75); }
+  .kb-brief-body h2 { color: #fff; font-size: 16px; font-weight: 700; margin: 28px 0 10px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .kb-brief-body h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+  .kb-assets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 600px) { .kb-assets-grid { grid-template-columns: repeat(2, 1fr); } }
+  .kb-asset-group { display: flex; flex-direction: column; gap: 8px; }
+  .kb-asset-label { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 600; margin-bottom: 4px; }
+  .kb-thumbs { display: flex; flex-wrap: wrap; gap: 6px; }
+  .kb-thumb { width: 56px; height: 56px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(79,70,229,0.3); background: rgba(79,70,229,0.1); cursor: pointer; text-decoration: none; font-size: 9px; color: #a5b4fc; display: flex; align-items: center; justify-content: center; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+  .kb-thumb:hover { border-color: #4f46e5; transform: scale(1.08); }
+  .kb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .kb-none { font-size: 12px; color: rgba(255,255,255,0.2); font-style: italic; }
+  .kb-footer { text-align: center; font-size: 11px; color: rgba(255,255,255,0.2); margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<div class="kb-wrap">
+  <div class="kb-header">
+    <div class="kb-logo">kreative</div>
+    <div class="kb-badge">KREATIVE BRIEF</div>
+    <div class="kb-date">11 avril 2026</div>
+  </div>
+
+  <div class="kb-card">
+    <div class="kb-card-title">Informations client</div>
+    <div class="kb-info-grid">
+      <div class="kb-info-item"><span class="kb-info-label">Nom</span><span class="kb-info-value">Clovis Dupont</span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Marque</span><span class="kb-info-value">Podland</span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Secteur</span><span class="kb-info-value">Formateur / Coach</span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Site web</span><span class="kb-info-value">Non renseigné</span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Email</span><span class="kb-info-value">low.sky2000@gmail.com</span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Téléphone</span><span class="kb-info-value">+33678481738</span></div>
+    </div>
+  </div>
+
+  <div class="kb-card">
+    <div class="kb-card-title">Compte-rendu client</div>
+    <div class="kb-brief-body"><h2>L'offre</h2><br><br>Podland accompagne en B2B les coachs et formateurs en ligne dans leur croissance commerciale. L'agence propose une solution complète centrée sur le "Podcast Funnel", une méthodologie qui utilise le podcast et le format long comme canal d'acquisition principal. Le service prend en charge la quasi-totalité de la production de contenu (à l'exception du tournage lui-même), permettant aux clients de générer du contenu sans investissement en temps considérable.<br><br>Non renseigné : détails spécifiques sur les produits, leur tarification et la répartition des campagnes publicitaires entre différentes offres.<br><br><h2>Positionnement &amp; différenciation</h2><br><br>L'avantage concurrentiel majeur de Podland repose sur la maîtrise et l'application du "Podcast Funnel", une stratégie encore largement méconnue dans l'univers des infopreneurs. Là où la majorité des acteurs du secteur proposent des accompagnements génériques, Podland se distingue en apportant une méthodologie spécialisée et éprouvée, transformant le podcast en véritable levier d'acquisition commerciale structuré.<br><br><h2>Client idéal</h2><br><br>Le prospect cible de Podland appartient à plusieurs catégories : coachs généralistes ou spécialisés (business, marketing, développement personnel, sport), consultants en stratégie, et agences de marketing ou growth hacking opérant en B2B.<br><br>Sur le plan économique, ces prospects génèrent un chiffre d'affaires minimum de 10 à 50 K€ mensuels et proposent des offres premium à 3 000€ ou plus. Ils disposent déjà d'une audience, même modeste, ou d'un réseau professionnel qu'ils peuvent activer.<br><br>Psychologiquement, il s'agit de personnalités ambitieuses conscientes de la valeur du personal branding et du contenu à long terme. Ils comprennent que le contenu est un investissement structurant, mais manquent de capacité ou de volonté à en gérer la production au quotidien. Ils cherchent à déléguer sans perdre le contrôle créatif et souhaitent accélérer leur acquisition sans passer par la publicité traditionnelle.<br><br>Leur réel objectif : obtenir des clients via la création de contenu, en y consacrant le minimum de temps personnel possible.<br><br><h2>Stratégie publicitaire</h2><br><br>L'objectif principal des campagnes publicitaires est d'attirer des prospects qualifiés en vue de les convertir lors d'appels de découverte ou de démonstration. Les créatifs doivent éviter tout positionnement générique, toute promesse irréaliste ou tout ton agressif et promotionnel qui pourrait décrédibiliser la marque auprès d'une audience de haut niveau.<br><br><h2>Identité visuelle</h2><br><br>La palette graphique privilégie les teintes d'orange et de marron. L'ambiance visuelle doit être sombre, contrastée et impactante, reflétant une certaine gravité et professionnalisme tout en conservant une présence mémorable. Les polices typographiques ne font l'objet d'aucune contrainte particulière.<br><br>Non renseigné : photos lifestyle disponibles à ce stade.<br><br><h2>Notes importantes</h2><br><br>Aucune note complémentaire à signaler.</div>
+  </div>
+
+  <div class="kb-card">
+    <div class="kb-card-title">Assets</div>
+    <div class="kb-assets-grid">
+      <div class="kb-asset-group">
+        <div class="kb-asset-label">Logo</div>
+        <div class="kb-thumbs"><span class="kb-none">Non fourni</span></div>
+      </div>
+      <div class="kb-asset-group">
+        <div class="kb-asset-label">Logo (2)</div>
+        <div class="kb-thumbs"><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/c223ae82-c48d-43bb-920a-deeb3e786cbe-pFzsJSJbbdOGTMGnB1oSZkNt9GophvyMqg0aSVK699lTREmTz6AmcY7FSWypfR7ZqbUr5ozXLw5s8JOCOojeYqRIzik6FICVpwt/Step_1_onboarding_payment_illustration_169_horiz-1775852734555.png" target="_blank" title="Logo 1"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/c223ae82-c48d-43bb-920a-deeb3e786cbe-pFzsJSJbbdOGTMGnB1oSZkNt9GophvyMqg0aSVK699lTREmTz6AmcY7FSWypfR7ZqbUr5ozXLw5s8JOCOojeYqRIzik6FICVpwt/Step_1_onboarding_payment_illustration_169_horiz-1775852734555.png" alt="Logo 1" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Logo 1'"></a></div>
+      </div>
+      <div class="kb-asset-group">
+        <div class="kb-asset-label">Photos produit</div>
+        <div class="kb-thumbs"><span class="kb-none">Non fourni</span></div>
+      </div>
+      <div class="kb-asset-group">
+        <div class="kb-asset-label">Lifestyle</div>
+        <div class="kb-thumbs"><span class="kb-none">Non fourni</span></div>
+      </div>
+      <div class="kb-asset-group">
+        <div class="kb-asset-label">Visuels supplémentaires</div>
+        <div class="kb-thumbs"><span class="kb-none">Non fourni</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kb-footer">kreative · contact@kreativeads.fr</div>
+</div>
+
+</body>
+</html>
