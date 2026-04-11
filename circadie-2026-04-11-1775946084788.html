@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kreative — Brief Circadié</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #06060f 0%, #0a0f2e 60%, #101840 100%); min-height: 100vh; padding: 40px 24px; color: #fff; }
+  .kb-wrap { max-width: 900px; margin: 0 auto; }
+  .kb-header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .kb-logo { font-size: 22px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+  .kb-badge { background: rgba(79,70,229,0.15); border: 1px solid rgba(79,70,229,0.4); color: #a5b4fc; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 100px; letter-spacing: 0.08em; }
+  .kb-date { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.35); }
+  .kb-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 24px; margin-bottom: 20px; }
+  .kb-card-title { font-size: 10px; font-weight: 700; color: #4f46e5; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
+  .kb-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .kb-info-item { display: flex; flex-direction: column; gap: 3px; }
+  .kb-info-label { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 500; }
+  .kb-info-value { font-size: 14px; color: #fff; font-weight: 600; }
+  .kb-info-value a { color: #a5b4fc; text-decoration: none; }
+  .kb-info-value a:hover { text-decoration: underline; }
+  .kb-brief-body { font-size: 14px; line-height: 1.85; color: rgba(255,255,255,0.75); }
+  .kb-brief-body h2 { color: #fff; font-size: 16px; font-weight: 700; margin: 28px 0 10px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .kb-brief-body h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+  .kb-assets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .kb-asset-group { display: flex; flex-direction: column; gap: 8px; }
+  .kb-asset-label { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 600; margin-bottom: 4px; }
+  .kb-thumbs { display: flex; flex-wrap: wrap; gap: 6px; }
+  .kb-thumb { width: 56px; height: 56px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(79,70,229,0.3); background: rgba(79,70,229,0.1); cursor: pointer; text-decoration: none; font-size: 9px; color: #a5b4fc; display: flex; align-items: center; justify-content: center; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+  .kb-thumb:hover { border-color: #4f46e5; transform: scale(1.08); }
+  .kb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .kb-none { font-size: 12px; color: rgba(255,255,255,0.2); font-style: italic; }
+  .kb-footer { text-align: center; font-size: 11px; color: rgba(255,255,255,0.2); margin-top: 40px; }
+
+  /* Lightbox */
+  .lb-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 1000; align-items: center; justify-content: center; flex-direction: column; gap: 20px; }
+  .lb-overlay.active { display: flex; }
+  .lb-img { max-width: 85vw; max-height: 75vh; object-fit: contain; border-radius: 10px; }
+  .lb-actions { display: flex; gap: 12px; align-items: center; }
+  .lb-download { background: #4f46e5; color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; padding: 10px 24px; border-radius: 8px; text-decoration: none; border: none; cursor: pointer; }
+  .lb-download:hover { background: #4338ca; }
+  .lb-close { background: rgba(255,255,255,0.08); color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; }
+  .lb-close:hover { background: rgba(255,255,255,0.15); }
+  .lb-label { font-size: 12px; color: rgba(255,255,255,0.4); }
+</style>
+</head>
+<body>
+
+<!-- Lightbox -->
+<div class="lb-overlay" id="lightbox" onclick="closeLightboxOnBg(event)">
+  <span class="lb-label" id="lb-label"></span>
+  <img class="lb-img" id="lb-img" src="" alt="">
+  <div class="lb-actions">
+    <a class="lb-download" id="lb-download" href="" target="_blank">↓ Télécharger</a>
+    <button class="lb-close" onclick="closeLightbox()">Fermer</button>
+  </div>
+</div>
+
+<div class="kb-wrap">
+  <div class="kb-header">
+    <div class="kb-logo">kreative</div>
+    <div class="kb-badge">KREATIVE BRIEF</div>
+    <div class="kb-date">11 avril 2026</div>
+  </div>
+
+  <div class="kb-card">
+    <div class="kb-card-title">Informations client</div>
+    <div class="kb-info-grid">
+      <div class="kb-info-item"><span class="kb-info-label">Nom</span><span class="kb-info-value">Adam Swift</span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Marque</span><span class="kb-info-value">Circadié</span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Secteur</span><span class="kb-info-value">E-commerçant </span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Site web</span><span class="kb-info-value"><a href="https://circadie.fr" target="_blank">circadie.fr</a></span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Email</span><span class="kb-info-value">low.sky2000@gmail.com</span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Téléphone</span><span class="kb-info-value">+33637137183</span></div>
+    </div>
+  </div>
+
+  <div class="kb-card">
+    <div class="kb-card-title">Compte-rendu client</div>
+    <div class="kb-brief-body"><h2>L'offre</h2><br><br>Circadié propose les lunettes NOVA Focus, un produit positionnné comme solution premium de protection oculaire et de régulation du rythme circadien. Au prix de NOVA - Focus, ce produit s'adresse à un besoin spécifique : réduire l'impact négatif de l'exposition prolongée aux écrans sur la santé et le bien-être.<br><br>Le produit répond à des problématiques concrètes et quotidiennes : la fatigue oculaire, les troubles du sommeil et les difficultés de concentration qui affectent de nombreux professionnels et utilisateurs réguliers d'écrans.<br><br><h2>Positionnement &amp; différenciation</h2><br><br>La différenciation clé de NOVA Focus repose sur une promesse scientifique : bloquer une qualité de lumière toxique que les lunettes concurrentes ne filtrent pas. Cette spécificité n'est pas anodine — elle positionne le produit non pas comme un simple accessoire de confort, mais comme un outil de protection santé fondé sur la compréhension du rythme circadien.<br><br>Là où les alternatives proposent généralement un soulagement cosmétique, Circadié affirme protéger activement les cycles biologiques de l'utilisateur, ce qui constitue une entrée stratégique et justifiée sur le marché.<br><br><h2>Client idéal</h2><br><br>Le cible privilégiée regroupe des actifs entre 25 et 40 ans, régulièrement exposés à plus de 8 heures d'écran par jour. Ces utilisateurs sont conscients des impacts physiologiques de cette exposition : fatigue visuelle, dégradation du sommeil, baisse de concentration. Ils constituent une audience capable de comprendre et de valoriser une solution pensée scientifiquement, et disposant du pouvoir d'achat pour investir dans un produit premium.<br><br><h2>Stratégie publicitaire</h2><br><br>L'objectif affiché est la génération de ventes directes sur le modèle NOVA Focus. Avec un seul produit à mettre en avant et une audience bien définie, la stratégie publicitaire doit communiquer sur le résultat tangible : retrouver clarté mentale, sommeil de qualité et confort visuel en contexte de travail intensif sur écran.<br><br>Les créatifs doivent connecter l'expertise scientifique de la marque à une réalité émotionnelle et lifestyle : celle de professionnels qui recherchent une solution actuelle et efficace à une problématique moderne.<br><br><h2>Identité visuelle</h2><br><br>La marque s'exprime à travers une palette restreinte et volontaire : noir profond (#0a0a0a), orange énergique (#F97316) et blanc (#FFFFFF). Cette combinaison soutient une ambiance visuelle définie comme premium, épurée et moderne.<br><br>La typographie s'appuie sur Neue Haas Grotesk et Inter, deux polices sans-serif qui renforcent cette dimension contemporaine et accessible. Les créatifs doivent bénéficier du fonds de photos lifestyle disponible pour illustrer des moments réels d'utilisation, loin d'une esthétique clinique ou médicale.<br><br><h2>Notes importantes</h2><br><br>Bien que Circadié fonde son expertise sur la science du rythme circadien, les visuels ne doivent pas adopter un ton trop technique ou scientifique. L'équilibre stratégique consiste à intégrer cette crédibilité scientifique dans une narration lifestyle premium, qui montre comment le produit s'inscrit naturellement dans le quotidien d'une personne active.<br><br>Les angles créatifs doivent explicitement éviter les traitements visuels trop médicaux ou cliniques, au profit d'une approche aspirationnelle et moderne qui résonne avec le positionnement premium de la marque.</div>
+  </div>
+
+  <div class="kb-card">
+    <div class="kb-card-title">Assets</div>
+    <div class="kb-assets-grid">
+      <div class="kb-asset-group">
+        <div class="kb-asset-label">Logo</div>
+        <div class="kb-thumbs"><a class="kb-thumb" href="#" onclick="openLightbox('https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/c8df9687-c819-49c6-8a21-82d4e96c90c1-FNPC9junaxTGS7wbkIhCw5YnFZdhPLLaNTsF7rGlxF5W8h9PsPymcdHPFESDJyv8wYtuJ6jPV4ZDtKbz5hkxuXwOwgmIle4ZgDC/circadie-logo-white.png', 'Logo 1')" ><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/c8df9687-c819-49c6-8a21-82d4e96c90c1-FNPC9junaxTGS7wbkIhCw5YnFZdhPLLaNTsF7rGlxF5W8h9PsPymcdHPFESDJyv8wYtuJ6jPV4ZDtKbz5hkxuXwOwgmIle4ZgDC/circadie-logo-white.png" alt="Logo 1" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Logo 1'"></a><a class="kb-thumb" href="#" onclick="openLightbox('https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/08b07fcd-cd69-46d5-8e85-a187661fbedd-rl8JyrNLZKvV0n7YtPxc5ecIV1gRsiAb6fjGyLFX98WsFbMvS8gzJDUJfTSYSu6WqsVFnjf20EhshONjsmzqRC693HhaedQ41Io/circadie-logo-black.png', 'Logo 2')" ><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/08b07fcd-cd69-46d5-8e85-a187661fbedd-rl8JyrNLZKvV0n7YtPxc5ecIV1gRsiAb6fjGyLFX98WsFbMvS8gzJDUJfTSYSu6WqsVFnjf20EhshONjsmzqRC693HhaedQ41Io/circadie-logo-black.png" alt="Logo 2" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Logo 2'"></a></div>
+      </div>
+      <div class="kb-asset-group">
+        <div class="kb-asset-label">Logo (2)</div>
+        <div class="kb-thumbs"><span class="kb-none">Non fourni</span></div>
+      </div>
+      <div class="kb-asset-group">
+        <div class="kb-asset-label">Photos produit</div>
+        <div class="kb-thumbs"><a class="kb-thumb" href="#" onclick="openLightbox('https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/969d26a1-e451-4730-9d43-0556bc65c852-5fQoV3wDQH518vwT2cVSWuOMaa1fOIHSy5oXlp6joIHYncknrL98W9KfdFzmC8X2PB4uHozWxi9dzPoRfGvJ0Aw21SuQ3EkktWQ/bc58ef37-9663-4c6b-9409-5fce5df22868.png', 'Photo 1')" ><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/969d26a1-e451-4730-9d43-0556bc65c852-5fQoV3wDQH518vwT2cVSWuOMaa1fOIHSy5oXlp6joIHYncknrL98W9KfdFzmC8X2PB4uHozWxi9dzPoRfGvJ0Aw21SuQ3EkktWQ/bc58ef37-9663-4c6b-9409-5fce5df22868.png" alt="Photo 1" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Photo 1'"></a><a class="kb-thumb" href="#" onclick="openLightbox('https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/e18be7f7-d08d-4a5e-87f3-6577269d1be6-vNVzAMpeE2NFXxeikMHjBgseDQ5iUsXYH8CxRvt7xtPrqOUJ6ZbRjGGcOcBd2Z8cuL5ywBXxi44bqlisEhOInFSt4BtSYdBEeW4/ChatGPT-Image-26-mars-2026-15_05_14.png', 'Photo 2')" ><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/e18be7f7-d08d-4a5e-87f3-6577269d1be6-vNVzAMpeE2NFXxeikMHjBgseDQ5iUsXYH8CxRvt7xtPrqOUJ6ZbRjGGcOcBd2Z8cuL5ywBXxi44bqlisEhOInFSt4BtSYdBEeW4/ChatGPT-Image-26-mars-2026-15_05_14.png" alt="Photo 2" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Photo 2'"></a><a class="kb-thumb" href="#" onclick="openLightbox('https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/c1cf5c60-413d-437f-9117-df93fd2a9fc4-hDT9XRkvy6Osm1ZzXNfCHRugdIAPOAbis78MY6Pvnvu4cF2syjaS4nQ9fPSc2dJy7bDxKvHxGAqPAYs1A9F09wsk5Vo8GKaCZMG/ChatGPT-Image-26-mars-2026-15_04_48.png', 'Photo 3')" ><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/c1cf5c60-413d-437f-9117-df93fd2a9fc4-hDT9XRkvy6Osm1ZzXNfCHRugdIAPOAbis78MY6Pvnvu4cF2syjaS4nQ9fPSc2dJy7bDxKvHxGAqPAYs1A9F09wsk5Vo8GKaCZMG/ChatGPT-Image-26-mars-2026-15_04_48.png" alt="Photo 3" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Photo 3'"></a><a class="kb-thumb" href="#" onclick="openLightbox('https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/969fea2d-de7b-4ee3-845f-94aa503112b4-I3GXeGnHkBcRgpu2wJr7PBlfq8rPlyPW0sWTN32N4L1atuUYb8AyBWORPwczPXGtvLMIa4HvZYU8PVV9nsJB5UnWGPYOVhm0Kng/ChatGPT-Image-26-mars-2026-15_03_59.png', 'Photo 4')" ><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/969fea2d-de7b-4ee3-845f-94aa503112b4-I3GXeGnHkBcRgpu2wJr7PBlfq8rPlyPW0sWTN32N4L1atuUYb8AyBWORPwczPXGtvLMIa4HvZYU8PVV9nsJB5UnWGPYOVhm0Kng/ChatGPT-Image-26-mars-2026-15_03_59.png" alt="Photo 4" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Photo 4'"></a></div>
+      </div>
+      <div class="kb-asset-group">
+        <div class="kb-asset-label">Lifestyle</div>
+        <div class="kb-thumbs"><a class="kb-thumb" href="#" onclick="openLightbox('https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/c2c4d7fc-333b-45a3-a966-225a38155d08-9pYa9Mtb3ym7iybRpfUa2GksF1D8ri2JopSfOujhXOIFaUorXNKepZO5meteEcRziO2tIiSNpYClBMhlQGlNzHmFqUROxIhRJQ1/08b89bea-ee77-4b98-8091-ba9b6c79f203.jpg', 'Lifestyle 1')" ><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/c2c4d7fc-333b-45a3-a966-225a38155d08-9pYa9Mtb3ym7iybRpfUa2GksF1D8ri2JopSfOujhXOIFaUorXNKepZO5meteEcRziO2tIiSNpYClBMhlQGlNzHmFqUROxIhRJQ1/08b89bea-ee77-4b98-8091-ba9b6c79f203.jpg" alt="Lifestyle 1" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 1'"></a><a class="kb-thumb" href="#" onclick="openLightbox('https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/afea563f-2f66-4dc0-b2a8-2c31caa6387c-LvmG4uvUynA1NA9WGfwJQBjrL5Fb68QOQxCDNZMcSgkQhNUAfmvNYvomXEovCuDxEMeTHwxZAu5BluBUQ4zyqmmI6f3LCoGnRKi/ChatGPT-Image-26-mars-2026-15_06_51.png', 'Lifestyle 2')" ><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/afea563f-2f66-4dc0-b2a8-2c31caa6387c-LvmG4uvUynA1NA9WGfwJQBjrL5Fb68QOQxCDNZMcSgkQhNUAfmvNYvomXEovCuDxEMeTHwxZAu5BluBUQ4zyqmmI6f3LCoGnRKi/ChatGPT-Image-26-mars-2026-15_06_51.png" alt="Lifestyle 2" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 2'"></a><a class="kb-thumb" href="#" onclick="openLightbox('https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/a3a8e766-d6ca-4661-8e25-f2cc536a1411-lbV9RKlVH3rqRJT8hFeeHZW8PsrmWtI6sK3rRQRBvZ7Q15BlkfBh7pw5bTiSvXmcy6xkMW7OGKm5GVJuMbkK5NZWLD5xUsrigyZ/Capture-d\'Acran-2026-03-26-153007.png', 'Lifestyle 3')" ><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-hSWiGFjTVhus/a3a8e766-d6ca-4661-8e25-f2cc536a1411-lbV9RKlVH3rqRJT8hFeeHZW8PsrmWtI6sK3rRQRBvZ7Q15BlkfBh7pw5bTiSvXmcy6xkMW7OGKm5GVJuMbkK5NZWLD5xUsrigyZ/Capture-d'Acran-2026-03-26-153007.png" alt="Lifestyle 3" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 3'"></a></div>
+      </div>
+      <div class="kb-asset-group">
+        <div class="kb-asset-label">Visuels supplémentaires</div>
+        <div class="kb-thumbs"><span class="kb-none">Non fourni</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kb-footer">kreative · contact@kreativeads.fr</div>
+</div>
+
+<script>
+  function openLightbox(url, label) {
+    document.getElementById('lb-img').src = url;
+    document.getElementById('lb-label').textContent = label;
+    document.getElementById('lb-download').href = url;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.getElementById('lb-img').src = '';
+  }
+  function closeLightboxOnBg(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+</body>
+</html>
