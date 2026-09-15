@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kreative — Brief Laboratoire Kotor Pharma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f9f6f3; --card: #ffffff; --line: rgba(17,17,17,0.08);
+    --blue: #4d94ff; --ink: #0e0e10; --grey: #6b6b70; --muted: #9a9aa0;
+    --shadow: 0 1px 2px rgba(17,17,17,0.04), 0 8px 24px rgba(17,17,17,0.05);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); min-height: 100vh; padding: 44px 24px; color: var(--ink); -webkit-font-smoothing: antialiased; }
+  .kb-wrap { max-width: 900px; margin: 0 auto; }
+  .kb-header { display: flex; align-items: center; gap: 12px; margin-bottom: 34px; }
+  .kb-logo { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; }
+  .kb-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(77,148,255,0.1); border: 1px solid rgba(77,148,255,0.28); color: var(--blue); font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 100px; letter-spacing: 0.08em; }
+  .kb-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+  .kb-date { margin-left: auto; font-size: 12px; color: var(--muted); }
+  .kb-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 26px; margin-bottom: 20px; box-shadow: var(--shadow); }
+  .kb-card-title { font-size: 10px; font-weight: 700; color: var(--blue); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 18px; }
+  .kb-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+  .kb-card-head .kb-card-title { margin-bottom: 0; }
+  .kb-copy { display: inline-flex; align-items: center; gap: 6px; font-family: inherit; font-size: 12px; font-weight: 600; color: var(--blue); background: rgba(77,148,255,0.08); border: 1px solid rgba(77,148,255,0.28); padding: 7px 12px; border-radius: 9px; cursor: pointer; transition: background .15s, transform .1s; white-space: nowrap; }
+  .kb-copy:hover { background: rgba(77,148,255,0.14); }
+  .kb-copy:active { transform: scale(0.96); }
+  .kb-copy.done { color: #1a8f2e; background: rgba(49,238,51,0.12); border-color: rgba(49,238,51,0.4); }
+  .kb-hidden-src { position: absolute; left: -9999px; top: -9999px; opacity: 0; height: 1px; width: 1px; }
+  .kb-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 600px) { .kb-info-grid { grid-template-columns: 1fr; } }
+  .kb-info-item { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .kb-info-label { font-size: 11px; color: var(--muted); font-weight: 500; }
+  .kb-info-value { font-size: 15px; color: var(--ink); font-weight: 600; word-break: break-word; }
+  .kb-info-value a { color: var(--blue); text-decoration: none; }
+  .kb-info-value a:hover { text-decoration: underline; }
+  .kb-brief-body { font-size: 14.5px; line-height: 1.7; color: var(--grey); }
+  .kb-brief-body strong { display: block; color: var(--ink); font-weight: 600; font-size: 14px; margin: 22px 0 4px; padding-left: 12px; border-left: 2px solid var(--blue); }
+  .kb-brief-body strong:first-child { margin-top: 0; }
+  .kb-brief-body a { color: var(--blue); text-decoration: none; word-break: break-all; }
+  .kb-brief-body a:hover { text-decoration: underline; }
+  .kb-brief-body h2 { color: var(--ink); font-size: 16px; font-weight: 700; margin: 30px 0 12px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .kb-brief-body h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+  .kb-assets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  @media (max-width: 600px) { .kb-assets-grid { grid-template-columns: repeat(2, 1fr); } }
+  .kb-asset-group { display: flex; flex-direction: column; gap: 8px; }
+  .kb-asset-label { font-size: 11px; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+  .kb-thumbs { display: flex; flex-wrap: wrap; gap: 6px; }
+  .kb-thumb { width: 56px; height: 56px; border-radius: 9px; overflow: hidden; border: 1px solid rgba(77,148,255,0.28); background: rgba(77,148,255,0.06); cursor: pointer; text-decoration: none; font-size: 9px; color: var(--blue); display: flex; align-items: center; justify-content: center; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+  .kb-thumb:hover { border-color: var(--blue); transform: scale(1.08); }
+  .kb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .kb-none { font-size: 12px; color: var(--muted); font-style: italic; }
+  .kb-footer { text-align: center; font-size: 11px; color: var(--muted); margin-top: 44px; }
+  .kb-footer a { color: var(--blue); text-decoration: none; }
+</style>
+</head>
+<body>
+ 
+<div class="kb-wrap">
+  <div class="kb-header">
+    <div class="kb-logo">kreative</div>
+    <div class="kb-badge">PACK DE 12 ADS</div>
+    <div class="kb-date">15 septembre 2026</div>
+  </div>
+ 
+  <div class="kb-card">
+    <div class="kb-card-title">Informations client</div>
+    <div class="kb-info-grid">
+      <div class="kb-info-item"><span class="kb-info-label">Marque</span><span class="kb-info-value">Laboratoire Kotor Pharma</span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Secteur</span><span class="kb-info-value">E-commerçant</span></div>
+      <div class="kb-info-item"><span class="kb-info-label">Site web</span><span class="kb-info-value"><a href="https://kotorpharma.com/" target="_blank">https://kotorpharma.com/</a></span></div>
+    </div>
+  </div>
+ 
+  <div class="kb-card">
+    <div class="kb-card-head">
+      <div class="kb-card-title">Brief client</div>
+      <button class="kb-copy" onclick="copyBrief(this)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>Copier le brief</span>
+      </button>
+    </div>
+    <div class="kb-brief-body"><strong>Nombre de créatives à produire</strong><br>12 créatives (PACK DE 12 ADS)<br> <br><strong>Quel est le nom de votre entreprise ?</strong><br>Laboratoire Kotor Pharma<br><br><strong>Quel est votre secteur d'activité ?</strong><br>E-commerçant<br><br><strong>Avez-vous un site web ?</strong><br>Oui<br><br><strong>Quelle est l'URL de votre site web ?</strong><br><a href="https://kotorpharma.com/" target="_blank" rel="noopener">https://kotorpharma.com/</a><br><br><strong>Combien de produits souhaitez-vous mettre en avant ?</strong><br>Plusieurs<br><br><strong>Veuillez décrire votre offre en quelques phrases</strong><br>Non renseigné<br><br><strong>Qu'est-ce qui vous différencie de vos concurrents ?</strong><br>Non renseigné<br><br><strong>Nom du produit et prix</strong><br>Non renseigné<br><br><strong>Pourquoi vos clients achètent ce produit plutôt qu'un autre ?</strong><br>Non renseigné<br><br><strong>Quel problème concret résout-il ?</strong><br>Non renseigné<br><br><strong>Quels sont vos produits ?</strong><br>Je pense que le plus pertinent serait de pousser 2 de mes bests sellers : <br>- Kotor Collagène<br>- Kotor Omega 3<br><br><strong>Comment souhaitez-vous répartir les ads entre vos produits ?</strong><br>50% Kotor Collagène<br>50% Kotor Omega 3<br><br><strong>Veuillez décrire votre client idéal et son problème principal</strong><br>Nos clients sont principalement des 50ans et +. Ils ont donc des troubles de personnes plutôt "agées" : douleurs articulaires, cholesterol, memoire, rides etc.<br><br><strong>Qu'est-ce qui freine vos prospects avant d'acheter ?</strong><br>Est ce que ca marche vraiment<br>Qu'est ce qui fait que ce complément est mieux qu'un autre<br><br><strong>Quel est votre objectif principal avec ces ads ?</strong><br>Générer des ventes<br><br><strong>Avez-vous une promo, une offre ou une accroche précise à inclure ?</strong><br>Non<br><br><strong>Y a-t-il des angles créatifs à éviter absolument ?</strong><br>Non<br><br><strong>Avez-vous des résultats chiffrés, témoignages clients ou preuves concrètes à mettre en avant ?</strong><br>Oui<br><br><strong>Quelles sont vos couleurs principales ?</strong><br>#266e9d #ffe563 ensuite noir blanc etc pour les typos<br><br><strong>Quelles sont vos polices ?</strong><br>Toutes les déclinaisons de futura<br><br><strong>En 3 mots, décrivez votre ambiance visuelle</strong><br>Épuré, naturel, clair<br><br><strong>Ads classiques</strong><br>70<br><br><strong>Ugly Ads</strong><br>30<br><br><strong>Avez-vous des photos lifestyle a nous partager ?</strong><br>Oui<br><br><strong>Y a-t-il autre chose que nous devons savoir pour produire vos meilleures créatives ?</strong><br>Non renseigné<br><br><strong>Quel ton voulez-vous pour le texte de vos créatives ?</strong><br>Expert &amp; rassurant (sérieux, pédagogue)<br><br><strong>Préférez-vous qu'on s'adresse à votre audience en tutoiement ou en vouvoiement ?</strong><br>Vouvoiement<br><br><strong>Quel style de créas souhaitez-vous ?</strong><br>Les deux<br><br><strong>Si vous avez un logo, téléchargez le ici (PNG fond transparent)</strong><br>Non renseigné<br><br><strong>Si vous avez des visuels que vous souhaitez inclure dans vos créatives, téléchargez-les ici</strong><br>Non renseigné<br><br><strong>Quelle est cette promo, cette offre ou cette accroche à inclure ?</strong><br>Non renseigné<br><br><strong>Quels angles ou éléments faut-il éviter absolument ?</strong><br>Non renseigné<br><br><strong>Quels sont ces résultats, témoignages ou preuves ?</strong><br>4.9/5 sur +1100 avis vérifiés en note de marque<br>Les notes des produits eux mêmes (voir page produit)<br>Une étude pour Kotor Collagène : <br><br>Résultats observés après seulement 30 j</div>
+    <textarea class="kb-hidden-src" id="briefSrc" readonly>Nombre de créatives à produire
+12 créatives (PACK DE 12 ADS)
+ 
+Quel est le nom de votre entreprise ?
+Laboratoire Kotor Pharma
+
+Quel est votre secteur d'activité ?
+E-commerçant
+
+Avez-vous un site web ?
+Oui
+
+Quelle est l'URL de votre site web ?
+https://kotorpharma.com/
+
+Combien de produits souhaitez-vous mettre en avant ?
+Plusieurs
+
+Veuillez décrire votre offre en quelques phrases
+Non renseigné
+
+Qu'est-ce qui vous différencie de vos concurrents ?
+Non renseigné
+
+Nom du produit et prix
+Non renseigné
+
+Pourquoi vos clients achètent ce produit plutôt qu'un autre ?
+Non renseigné
+
+Quel problème concret résout-il ?
+Non renseigné
+
+Quels sont vos produits ?
+Je pense que le plus pertinent serait de pousser 2 de mes bests sellers : 
+- Kotor Collagène
+- Kotor Omega 3
+
+Comment souhaitez-vous répartir les ads entre vos produits ?
+50% Kotor Collagène
+50% Kotor Omega 3
+
+Veuillez décrire votre client idéal et son problème principal
+Nos clients sont principalement des 50ans et +. Ils ont donc des troubles de personnes plutôt "agées" : douleurs articulaires, cholesterol, memoire, rides etc.
+
+Qu'est-ce qui freine vos prospects avant d'acheter ?
+Est ce que ca marche vraiment
+Qu'est ce qui fait que ce complément est mieux qu'un autre
+
+Quel est votre objectif principal avec ces ads ?
+Générer des ventes
+
+Avez-vous une promo, une offre ou une accroche précise à inclure ?
+Non
+
+Y a-t-il des angles créatifs à éviter absolument ?
+Non
+
+Avez-vous des résultats chiffrés, témoignages clients ou preuves concrètes à mettre en avant ?
+Oui
+
+Quelles sont vos couleurs principales ?
+#266e9d #ffe563 ensuite noir blanc etc pour les typos
+
+Quelles sont vos polices ?
+Toutes les déclinaisons de futura
+
+En 3 mots, décrivez votre ambiance visuelle
+Épuré, naturel, clair
+
+Ads classiques
+70
+
+Ugly Ads
+30
+
+Avez-vous des photos lifestyle a nous partager ?
+Oui
+
+Y a-t-il autre chose que nous devons savoir pour produire vos meilleures créatives ?
+Non renseigné
+
+Quel ton voulez-vous pour le texte de vos créatives ?
+Expert &amp; rassurant (sérieux, pédagogue)
+
+Préférez-vous qu'on s'adresse à votre audience en tutoiement ou en vouvoiement ?
+Vouvoiement
+
+Quel style de créas souhaitez-vous ?
+Les deux
+
+Si vous avez un logo, téléchargez le ici (PNG fond transparent)
+Non renseigné
+
+Si vous avez des visuels que vous souhaitez inclure dans vos créatives, téléchargez-les ici
+Non renseigné
+
+Quelle est cette promo, cette offre ou cette accroche à inclure ?
+Non renseigné
+
+Quels angles ou éléments faut-il éviter absolument ?
+Non renseigné
+
+Quels sont ces résultats, témoignages ou preuves ?
+4.9/5 sur +1100 avis vérifiés en note de marque
+Les notes des produits eux mêmes (voir page produit)
+Une étude pour Kotor Collagène : 
+
+Résultats observés après seulement 30 j</textarea>
+  </div>
+ 
+  <div class="kb-card">
+    <div class="kb-card-title">Assets</div>
+    <div class="kb-assets-grid"><div class="kb-asset-group"><div class="kb-asset-label">Logo</div><div class="kb-thumbs"><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/4dbdc222-b30d-4447-8dd4-e78e39870eb5-fVRB5BrXWgHSrQGxwW4xLu76LflqEv01uHXv013yCjbpK6xBFkPf5txbpP01Qx3HXFZGhHrY7rHQLS4ols2tSexr8auVGgNAAu5/LOGO-KOTOR_Plan-de-travail-1-copie-4.png" target="_blank" title="Logo 1"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/4dbdc222-b30d-4447-8dd4-e78e39870eb5-fVRB5BrXWgHSrQGxwW4xLu76LflqEv01uHXv013yCjbpK6xBFkPf5txbpP01Qx3HXFZGhHrY7rHQLS4ols2tSexr8auVGgNAAu5/LOGO-KOTOR_Plan-de-travail-1-copie-4.png" alt="Logo 1" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Logo 1'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/c57d00aa-5fa5-4b44-a3d4-766f02f05924-f4tdXSBYYqxnRGQiJMlUzUg1QRxyQzgsQMsAjiWqlfWtvu0M3eVTbYH7NJVuINzTopDYbDLisp0MhT5cus2vHU666UwS5rN74Vj/LOGO-KOTOR_Plan-de-travail-1-copie-5.png" target="_blank" title="Logo 2"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/c57d00aa-5fa5-4b44-a3d4-766f02f05924-f4tdXSBYYqxnRGQiJMlUzUg1QRxyQzgsQMsAjiWqlfWtvu0M3eVTbYH7NJVuINzTopDYbDLisp0MhT5cus2vHU666UwS5rN74Vj/LOGO-KOTOR_Plan-de-travail-1-copie-5.png" alt="Logo 2" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Logo 2'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/db917af6-dd5b-40b9-bcc8-b65eaeb2a55c-BzLOzzzO13nHEmItzAE9ANPIDhScymjyqwzFSVhiMlP2WzWWAKTlZpZt3E6TRcY2rTiVQzANJUzztdlCHdM3w9P94Z8SdYZ6u60/Kotor-Pharma-FOnd-Blanc-Rond.png" target="_blank" title="Logo 3"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/db917af6-dd5b-40b9-bcc8-b65eaeb2a55c-BzLOzzzO13nHEmItzAE9ANPIDhScymjyqwzFSVhiMlP2WzWWAKTlZpZt3E6TRcY2rTiVQzANJUzztdlCHdM3w9P94Z8SdYZ6u60/Kotor-Pharma-FOnd-Blanc-Rond.png" alt="Logo 3" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Logo 3'"></a></div></div><div class="kb-asset-group"><div class="kb-asset-label">Photos produit</div><div class="kb-thumbs"><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/09b26cc7-07e1-4a2d-ab25-b593d8d1102d-LaIeD4ufOX09l2bMceHCTM1q2G3QRWeDH8GTLxb1GZpudsJwjBwLTBGZe5IPt6MjqWPgvehBqvcXMJH3MExFbq5BqKzWQ0bW6wF/Kotor-Omega-3-Epax-Packshot-Ombre.png" target="_blank" title="Photos produit 1"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/09b26cc7-07e1-4a2d-ab25-b593d8d1102d-LaIeD4ufOX09l2bMceHCTM1q2G3QRWeDH8GTLxb1GZpudsJwjBwLTBGZe5IPt6MjqWPgvehBqvcXMJH3MExFbq5BqKzWQ0bW6wF/Kotor-Omega-3-Epax-Packshot-Ombre.png" alt="Photos produit 1" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Photos produit 1'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/a946b959-cf41-474b-a1c3-83da1c51b97e-xZsPYwmSCdBK2aO6fDuTHdF8P79BoDM9KERQOaQ0U26MUOgfJBWbxyRb2CBYBO42C5iMPBLbmn1cQhX8CuzR6SJ4uoSxL9tDXjD/Kotor-CollageIne-Packshot-Ombre.png" target="_blank" title="Photos produit 2"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/a946b959-cf41-474b-a1c3-83da1c51b97e-xZsPYwmSCdBK2aO6fDuTHdF8P79BoDM9KERQOaQ0U26MUOgfJBWbxyRb2CBYBO42C5iMPBLbmn1cQhX8CuzR6SJ4uoSxL9tDXjD/Kotor-CollageIne-Packshot-Ombre.png" alt="Photos produit 2" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Photos produit 2'"></a></div></div><div class="kb-asset-group"><div class="kb-asset-label">Lifestyle</div><div class="kb-thumbs"><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/8c5d0e56-7856-483e-b8d7-b4c720e54470-mP4oHdfuqFGTWMW7rrhXRQbaXS0S72EAc8RgeZ8652xGFXbET2M6cJhVxKUPL6oS3kvlvoEbnI6wIpzZJAGK7V6GLnI3u8a7SBh/KotorPharma_Collagene-33.jpg" target="_blank" title="Lifestyle 1"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/8c5d0e56-7856-483e-b8d7-b4c720e54470-mP4oHdfuqFGTWMW7rrhXRQbaXS0S72EAc8RgeZ8652xGFXbET2M6cJhVxKUPL6oS3kvlvoEbnI6wIpzZJAGK7V6GLnI3u8a7SBh/KotorPharma_Collagene-33.jpg" alt="Lifestyle 1" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 1'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/401d2845-72b2-48af-900d-b7c2139ba7e3-zTRJ4DFyQNNZFfbzeaoiRvJOQdSoI9i6n6CBRqpvgvM6Nj4meKpjxIBSildn7Fw5F3iCzVzJmSq180Q2iw14VRjdXQYpFVKo92P/KotorPharma_collagene-06.jpg" target="_blank" title="Lifestyle 2"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/401d2845-72b2-48af-900d-b7c2139ba7e3-zTRJ4DFyQNNZFfbzeaoiRvJOQdSoI9i6n6CBRqpvgvM6Nj4meKpjxIBSildn7Fw5F3iCzVzJmSq180Q2iw14VRjdXQYpFVKo92P/KotorPharma_collagene-06.jpg" alt="Lifestyle 2" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 2'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/707785a8-1ecd-45e7-b613-530723772125-aKMan2uVTfP07ird9zinKIzzNJS4eCC6tZraICHMsvMWZw5RkdQi2b576tP5IYKlHZCeIJgKFDszHNxIafnLaEeXJgiAUsIsSsz/KotorPharma_collagene-09.jpg" target="_blank" title="Lifestyle 3"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/707785a8-1ecd-45e7-b613-530723772125-aKMan2uVTfP07ird9zinKIzzNJS4eCC6tZraICHMsvMWZw5RkdQi2b576tP5IYKlHZCeIJgKFDszHNxIafnLaEeXJgiAUsIsSsz/KotorPharma_collagene-09.jpg" alt="Lifestyle 3" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 3'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/ddd3ca65-20ec-42b4-9975-c3d43e78ef99-Mn2cOe8HhurnL82RA1z94iBAGbggAwnXJQmORaC4CzdZGlA87aJlgSnxLxNANxD4DRM8gi4VhcDgmDYPq0LQbXK5sweguhGDIfx/KotorPharma_Collagene-36.jpg" target="_blank" title="Lifestyle 4"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/ddd3ca65-20ec-42b4-9975-c3d43e78ef99-Mn2cOe8HhurnL82RA1z94iBAGbggAwnXJQmORaC4CzdZGlA87aJlgSnxLxNANxD4DRM8gi4VhcDgmDYPq0LQbXK5sweguhGDIfx/KotorPharma_Collagene-36.jpg" alt="Lifestyle 4" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 4'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/0b503713-0bfd-413a-b297-4596e1ed68d8-qYplneQff4BlGaOLQp2ry7E9fZITDIKR5qCWJijq8b8BAnoxmost6kEvtuj3HTnHzgIXzp3cwN2zxBeLAJKRC2IHw8rPJgZqDeg/KotorPharma_Collagene-14.jpg" target="_blank" title="Lifestyle 5"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/0b503713-0bfd-413a-b297-4596e1ed68d8-qYplneQff4BlGaOLQp2ry7E9fZITDIKR5qCWJijq8b8BAnoxmost6kEvtuj3HTnHzgIXzp3cwN2zxBeLAJKRC2IHw8rPJgZqDeg/KotorPharma_Collagene-14.jpg" alt="Lifestyle 5" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 5'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/df5ae1de-9828-4dc4-b6fc-80f51fed4e6f-xEQuKgOEGsheJnTAleklddiIPEn3YG3KhqOH5j7uOzTVB2JgjD3BsZPjyYX0TK5u7lVrut2bTDznGwSKoUlECmVurAD5YYF36yU/KotorPharma_Collagene-18-(1).jpg" target="_blank" title="Lifestyle 6"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/df5ae1de-9828-4dc4-b6fc-80f51fed4e6f-xEQuKgOEGsheJnTAleklddiIPEn3YG3KhqOH5j7uOzTVB2JgjD3BsZPjyYX0TK5u7lVrut2bTDznGwSKoUlECmVurAD5YYF36yU/KotorPharma_Collagene-18-(1).jpg" alt="Lifestyle 6" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 6'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/6bc7c676-5468-481b-bf88-c9172de6f3c7-epgXyXSvku8uRGprvzF70M3e7ixS2E4eUL3aKXKqeehfZlY2OhO2vjlcRGmxCtFwjRMqc5O2qjr7niGML6QmMpKaAN8PEfLs92a/KotorPharma_Collagene-22.jpg" target="_blank" title="Lifestyle 7"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/6bc7c676-5468-481b-bf88-c9172de6f3c7-epgXyXSvku8uRGprvzF70M3e7ixS2E4eUL3aKXKqeehfZlY2OhO2vjlcRGmxCtFwjRMqc5O2qjr7niGML6QmMpKaAN8PEfLs92a/KotorPharma_Collagene-22.jpg" alt="Lifestyle 7" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 7'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/80b7e796-d3de-4a7d-bd23-5c977e757955-qKAR69TI3ghZkK3Oqv3mpyZrz3kmwXvHS5tYev2xvVtgLcHMrB0hXJtNtI4loYZy47eYZoEZNqOIwWiYsTIDvm2qCD7qMLTAfYd/KotorPharma_Collagene-32.jpg" target="_blank" title="Lifestyle 8"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/80b7e796-d3de-4a7d-bd23-5c977e757955-qKAR69TI3ghZkK3Oqv3mpyZrz3kmwXvHS5tYev2xvVtgLcHMrB0hXJtNtI4loYZy47eYZoEZNqOIwWiYsTIDvm2qCD7qMLTAfYd/KotorPharma_Collagene-32.jpg" alt="Lifestyle 8" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 8'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/e1b0bde6-1086-47b8-891d-62df8081b34a-0YtpM0lUwjSJc2SOl0nDQNzzGNnaBqAPKuoGO2SHhymeKYX7Y2HAHVjifg6hK5bHrmMSjt5ebfzXyv0uLimtz9DejPFl79pkFPI/KotorPharma_Collagene-30.jpg" target="_blank" title="Lifestyle 9"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/e1b0bde6-1086-47b8-891d-62df8081b34a-0YtpM0lUwjSJc2SOl0nDQNzzGNnaBqAPKuoGO2SHhymeKYX7Y2HAHVjifg6hK5bHrmMSjt5ebfzXyv0uLimtz9DejPFl79pkFPI/KotorPharma_Collagene-30.jpg" alt="Lifestyle 9" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 9'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/81c9430d-3e24-46be-8a27-796dac5b2747-IynniE72Dqo1boSWYtPKwnVSeHekHlvkfZicel1pQt9vSi1oJdC0SogzVbtLcFOsNqlbmdEVxeCZDp0fiLppIyjbGGQ5oA9f36X/KotorPharma_Collagene-26.jpg" target="_blank" title="Lifestyle 10"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/81c9430d-3e24-46be-8a27-796dac5b2747-IynniE72Dqo1boSWYtPKwnVSeHekHlvkfZicel1pQt9vSi1oJdC0SogzVbtLcFOsNqlbmdEVxeCZDp0fiLppIyjbGGQ5oA9f36X/KotorPharma_Collagene-26.jpg" alt="Lifestyle 10" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 10'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/faf378d5-efd5-490c-9f0d-50f07ebb2e39-w3lb05M35VAGcY2a1l6tfmUt7669HxfY2ZthEAWfQsHkYo88X4gwJjtLpfDUYQGiuqnvXo5rClkX9F6ObWgTMHBhwsir4apNkMH/KotorPharma_Collagene-18.jpg" target="_blank" title="Lifestyle 11"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/faf378d5-efd5-490c-9f0d-50f07ebb2e39-w3lb05M35VAGcY2a1l6tfmUt7669HxfY2ZthEAWfQsHkYo88X4gwJjtLpfDUYQGiuqnvXo5rClkX9F6ObWgTMHBhwsir4apNkMH/KotorPharma_Collagene-18.jpg" alt="Lifestyle 11" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 11'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/27b351dd-59e8-4dfe-9bee-d8c2fc72e726-eIMszCiCcWf7ewjK1aL8yALT6qyRmmW4KnQfeKWrckyDb7ebEWzg6fFSvFBM9XNrt4YmAoqek3pP9dnuD27tJ4ytN3Gu7IiB6Uv/KotorPharma_collagene-10.jpg" target="_blank" title="Lifestyle 12"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/27b351dd-59e8-4dfe-9bee-d8c2fc72e726-eIMszCiCcWf7ewjK1aL8yALT6qyRmmW4KnQfeKWrckyDb7ebEWzg6fFSvFBM9XNrt4YmAoqek3pP9dnuD27tJ4ytN3Gu7IiB6Uv/KotorPharma_collagene-10.jpg" alt="Lifestyle 12" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 12'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/aeab4b3c-e7f8-47cf-95b0-18c13ab228e1-tDtT8r6brZ639aHFLisbLKWVjWPN8PZESjg2MOgr6vmxjI8CrlabxwuIkN3yMJywNOblNMBzn8mNDT4Ro62Unzil02hZMtWORLU/KotorPharma_Collagene-40.jpg" target="_blank" title="Lifestyle 13"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/aeab4b3c-e7f8-47cf-95b0-18c13ab228e1-tDtT8r6brZ639aHFLisbLKWVjWPN8PZESjg2MOgr6vmxjI8CrlabxwuIkN3yMJywNOblNMBzn8mNDT4Ro62Unzil02hZMtWORLU/KotorPharma_Collagene-40.jpg" alt="Lifestyle 13" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 13'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/1d719006-54a1-42c1-9f63-257ed7e92a9a-mwj0AcKWTFjb300BQ2vU9uupqA7n4sDaWRxLWdVrvKu0yW3MSDQUOt78Rb1nRcyr45nsJmx8UcV4CqBxI633zYHc7Gofp4MXgRa/KotorPharma_Collagene-31.jpg" target="_blank" title="Lifestyle 14"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/1d719006-54a1-42c1-9f63-257ed7e92a9a-mwj0AcKWTFjb300BQ2vU9uupqA7n4sDaWRxLWdVrvKu0yW3MSDQUOt78Rb1nRcyr45nsJmx8UcV4CqBxI633zYHc7Gofp4MXgRa/KotorPharma_Collagene-31.jpg" alt="Lifestyle 14" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 14'"></a><a class="kb-thumb" href="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/f08aa9ae-145f-48f5-aaab-427232340de2-gL6gsU8JpJCwjokYUHT9lEevGgNyy1MjAphPiVRE5ryPKtY7IQiNVzV26dHgrf5RulRatnzDp0dryiasv5Cz7kLPM8U575bdfxX/KotorPharma_Collagene-12.jpg" target="_blank" title="Lifestyle 15"><img src="https://prod-fillout-oregon-s3.s3.us-west-2.amazonaws.com/orgid-630545/flowpublicid-soMTps1WZmus/f08aa9ae-145f-48f5-aaab-427232340de2-gL6gsU8JpJCwjokYUHT9lEevGgNyy1MjAphPiVRE5ryPKtY7IQiNVzV26dHgrf5RulRatnzDp0dryiasv5Cz7kLPM8U575bdfxX/KotorPharma_Collagene-12.jpg" alt="Lifestyle 15" onerror="this.parentElement.style.fontSize='9px';this.parentElement.innerHTML='Lifestyle 15'"></a></div></div></div>
+  </div>
+ 
+  <div class="kb-footer">kreative · <a href="mailto:contact@kreativeads.fr">contact@kreativeads.fr</a></div>
+</div>
+ 
+<script>
+function copyBrief(btn){
+  var ta = document.getElementById('briefSrc');
+  var text = ta.value;
+  function done(){ var s = btn.querySelector('span'); var old = s.getAttribute('data-old') || s.textContent; s.setAttribute('data-old', old); btn.classList.add('done'); s.textContent = 'Copié ✓'; setTimeout(function(){ btn.classList.remove('done'); s.textContent = old; }, 1600); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done, function(){ ta.style.position='static'; ta.select(); document.execCommand('copy'); ta.style.position='absolute'; done(); });
+  } else { ta.style.position='static'; ta.select(); document.execCommand('copy'); ta.style.position='absolute'; done(); }
+}
+</script>
+ 
+</body>
+</html>
